@@ -1,11 +1,11 @@
 version: "1"
-serverUrl: https://cloudbees.polaris.synopsys.com/
+project:
+  name: CoverityTest-vulnerable-java-application
+  branch: main
+analyze:
+  mode: central
 install:
   coverity:
     version: default
-project:
-  name: "CoverityTest-vulnerable-java-application"
-  branch: "main"
-capture:
-  build:
-    command: "gradle build"
+serverUrl: https://cloudbees.polaris.synopsys.com/
+noLogEnvironmentVariable: enable  
