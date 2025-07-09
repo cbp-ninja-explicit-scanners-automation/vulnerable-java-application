@@ -6,6 +6,6 @@ install:
 project:
   name: "CoverityTest-vulnerable-java-application"
   branch: "main"
-  capture:
+capture:
   build:
     command: "gradle build"
