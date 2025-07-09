@@ -17,8 +17,8 @@ jobs:
     steps:
       - name: checkout Source Code
         uses: cloudbees-io/checkout@v1
-        with:
-            repository: cbp-ninja-explicit-scanners-automation/vulnerable-java-application
+        # with:
+        #     repository: cbp-ninja-explicit-scanners-automation/vulnerable-java-application
       - name: Scan with Coverity on Polaris
         uses: https://github.com/cloudbees-io/coverity-polaris-sast-scan-code@v2
         with:
