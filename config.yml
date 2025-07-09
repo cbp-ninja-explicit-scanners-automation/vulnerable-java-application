@@ -1,0 +1,11 @@
+version: "1"
+serverUrl: https://cloudbees.polaris.synopsys.com/
+install:
+  coverity:
+    version: default
+project:
+  name: "CoverityTest-vulnerable-java-application"
+  branch: "main"
+  capture:
+  build:
+    command: "gradle build"
