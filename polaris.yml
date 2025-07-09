@@ -7,6 +7,12 @@ install:
 project:
   name: vulnerable-java-application
   branch: main
+capture:
+  build:
+    cleanCommands:
+    - shell: [make, -f, Makefile, clean]
+    buildCommands:
+    - shell: [make, -f, Makefile]
   
 
   
