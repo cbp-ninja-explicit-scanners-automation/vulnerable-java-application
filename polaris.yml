@@ -3,7 +3,7 @@ project:
   name: CoverityTest-vulnerable-java-application
   branch: main
   revision:
-    # name: ${scm.git.commit}
+    name: commit-59bfc87
     date: 2025-07-10T15:30:00Z
 analyze:
   mode: central
