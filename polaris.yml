@@ -8,4 +8,7 @@ install:
   coverity:
     version: default
 serverUrl: https://cloudbees.polaris.synopsys.com/
-noLogEnvironmentVariable: enable  
+# noLogEnvironmentVariable: enable  
+# capture:
+#   build:
+  
