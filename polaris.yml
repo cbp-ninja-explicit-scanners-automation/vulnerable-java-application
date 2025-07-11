@@ -3,8 +3,8 @@ project:
   name: CoverityTest-vulnerable-java-application
   branch: main
   revision:
-    name: commit-59bfc87
-    date: 2025-07-10T15:30:00Z
+    name: ${scm.git.repo}
+    branch: ${scm.git.branch}
 analyze:
   mode: central
 install:
@@ -12,6 +12,9 @@ install:
     version: default
 serverUrl: https://cloudbees.polaris.synopsys.com/
 # noLogEnvironmentVariable: enable  
-# capture:
-#   build:
+capture:
+  fileSystem:
+    java:
+      files:
+      - directory: ${project.projectDir}
   
