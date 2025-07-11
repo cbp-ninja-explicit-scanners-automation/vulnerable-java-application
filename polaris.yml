@@ -3,8 +3,8 @@ project:
   name: CoverityTest-vulnerable-java-application
   branch: main
   revision:
-    name: ${scm.git.repo}
-    branch: ${scm.git.branch}
+    name: commit-59bfc87
+    branch: 2025-07-10T15:30:00Z
 analyze:
   mode: central
 install:
@@ -16,5 +16,5 @@ capture:
   fileSystem:
     java:
       files:
-      - directory: ${project.projectDir}
+      - directory: src
   
