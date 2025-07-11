@@ -4,7 +4,7 @@ project:
   branch: main
   revision:
     name: commit-59bfc87
-    branch: 2025-07-10T15:30:00Z
+    date: 2025-07-10T15:30:00Z
 analyze:
   mode: central
 install:
