@@ -3,39 +3,32 @@ project:
   name: vulnerable-java-application
   branch: main
   revision:
-  name: main
-  date: ${scm.git.commit.date}
+    name: main
+    date: "2025-07-14T15:30:00Z"
 capture:
-  #build:
-    # cleanCommands:
-      #- shell: [mvn, -B, -f, pom.xml, clean]
-      #buildCommands:
-      #- shell: [mvn, -B, -f, pom.xml, install]
-    fileSystem:
-      ears:
-        extensions: [ear]
-        files:
-        - directory: ${project.projectDir}
+  fileSystem:
+    ears:
+      extensions: [ear]
+      files:
+        - directory: ./src
     java:
       files:
-      - directory: ${project.projectDir}
-      # - excludeRegex: reference-data-test|/src/test/
+        - directory: ./src
     javascript:
       files:
-      - directory: ${project.projectDir}
-      # - excludeRegex: node_modules|bower_components|vendor
+        - directory: ./src
     wars:
       extensions: [war]
       files:
-      - directory: ${project.projectDir}
+        - directory: ./src
 analyze:
-   mode: central
-   coverity:
-     caching:
-       jars: disable
-       tu-caching: disable
-       rws: disable
-       pfi: disable
+  mode: central
+  coverity:
+    caching:
+      jars: disable
+      tu-caching: disable
+      rws: disable
+      pfi: disable
 install:
   coverity:
     version: default
