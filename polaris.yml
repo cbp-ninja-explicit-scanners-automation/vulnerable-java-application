@@ -1,6 +1,6 @@
 version: "1"
 project:
-  name: coverity-java-repo-scan
+  name: vulnerable-java-application
   branch: main
   revision:
   name: main
