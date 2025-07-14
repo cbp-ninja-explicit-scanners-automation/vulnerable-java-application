@@ -10,7 +10,7 @@ capture:
   fileSystem:
     java:
       files:
-        - directory: .
+        - directory: ./src/main/java/com/datadoghq/workshops/samplevulnerablejavaapp
 
 analyze:
   mode: central
