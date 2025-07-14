@@ -1,20 +1,42 @@
 version: "1"
 project:
-  name: CoverityTest-vulnerable-java-application
+  name: coverity-java-repo-scan
   branch: main
   revision:
-    name: commit-59bfc87
-    date: 2025-07-10T15:30:00Z
+  name: main
+  date: ${scm.git.commit.date}
+capture:
+  #build:
+    # cleanCommands:
+      #- shell: [mvn, -B, -f, pom.xml, clean]
+      #buildCommands:
+      #- shell: [mvn, -B, -f, pom.xml, install]
+    fileSystem:
+      ears:
+        extensions: [ear]
+        files:
+        - directory: ${project.projectDir}
+    java:
+      files:
+      - directory: ${project.projectDir}
+      # - excludeRegex: reference-data-test|/src/test/
+    javascript:
+      files:
+      - directory: ${project.projectDir}
+      # - excludeRegex: node_modules|bower_components|vendor
+    wars:
+      extensions: [war]
+      files:
+      - directory: ${project.projectDir}
 analyze:
-  mode: central
+   mode: central
+   coverity:
+     caching:
+       jars: disable
+       tu-caching: disable
+       rws: disable
+       pfi: disable
 install:
   coverity:
     version: default
-serverUrl: https://cloudbees.polaris.synopsys.com/
-# noLogEnvironmentVariable: enable  
-capture:
-  fileSystem:
-    java:
-      files:
-      - directory: src
-  
+serverUrl: https://cloudbees.polaris.synopsys.com
