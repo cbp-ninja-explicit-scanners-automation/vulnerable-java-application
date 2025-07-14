@@ -1,28 +1,31 @@
 version: "1"
 project:
-  name: ${scm.git.repo}
-  branch: ${scm.git.branch}
+  name: vulnerable-java-application
+  branch: main           
   revision:
-    name: ${scm.git.commit}
-    date: ${scm.git.commit.date}
+    name: HEAD           # Use commit SHA if available
+    date: "2025-07-14T00:00:00Z"   # Or use dynamic injection via your pipeline
+
 capture:
   fileSystem:
-    ears:
-      extensions: [ear]
-      files:
-        - directory: ${project.projectDir}
     java:
       files:
-        - directory: ${project.projectDir}
+        - directory: .
     wars:
       extensions: [war]
       files:
-        - directory: ${project.projectDir}
+        - directory: .
+    ears:
+      extensions: [ear]
+      files:
+        - directory: .
+
   build:
     cleanCommands:
-    - shell: [gradle, -b, build.gradle, --no-daemon, clean]
+      - shell: ["./gradlew", clean]
     buildCommands:
-    - shell: [gradle, -b, build.gradle, --no-daemon, build]
+      - shell: ["./gradlew", build]
+
 analyze:
   mode: central
   coverity:
@@ -31,7 +34,9 @@ analyze:
       tu-caching: disable
       rws: disable
       pfi: disable
+
 install:
   coverity:
     version: default
+
 serverUrl: https://cloudbees.polaris.synopsys.com
