@@ -14,13 +14,11 @@ capture:
     java:
       files:
         - directory: ./src
-    javascript:
-      files:
-        - directory: ./src
-    wars:
-      extensions: [war]
-      files:
-        - directory: ./src
+  build:
+    cleanCommands:
+    - shell: [gradle, -b, build.gradle, --no-daemon, clean]
+    buildCommands:
+    - shell: [gradle, -b, build.gradle, --no-daemon, build]
 analyze:
   mode: central
   coverity:
