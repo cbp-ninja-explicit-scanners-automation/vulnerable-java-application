@@ -1,19 +1,23 @@
 version: "1"
 project:
-  name: vulnerable-java-application
-  branch: main
+  name: ${scm.git.repo}
+  branch: ${scm.git.branch}
   revision:
-    name: main
-    date: "2025-07-14T15:30:00Z"
+    name: ${scm.git.commit}
+    date: ${scm.git.commit.date}
 capture:
   fileSystem:
     ears:
       extensions: [ear]
       files:
-        - directory: ./src
+        - directory: ${project.projectDir}
     java:
       files:
-        - directory: ./src
+        - directory: ${project.projectDir}
+    wars:
+      extensions: [war]
+      files:
+        - directory: ${project.projectDir}
   build:
     cleanCommands:
     - shell: [gradle, -b, build.gradle, --no-daemon, clean]
