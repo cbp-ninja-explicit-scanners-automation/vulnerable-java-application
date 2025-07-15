@@ -11,14 +11,18 @@ project:
 #     java:
 #       files:
 #         - directory: ./src/main/java/com/datadoghq/workshops/samplevulnerablejavaapp
+# capture:
+#    coverity:
+#      buildless:
+#         project:
+#            languages:
+#             - "java"
+#             excludes:
+#             - build.gradle
+
 capture:
-   coverity:
-     buildless:
-        project:
-           languages:
-            - "java"
-            excludes:
-            - build.gradle
+  coverity:
+    autoCapture: enable
 
 analyze:
   mode: central
