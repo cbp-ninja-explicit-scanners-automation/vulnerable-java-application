@@ -17,7 +17,6 @@ capture:
         project:
            languages:
             - "java"
-            # - "javascript"
             excludes:
             - build.gradle
 
