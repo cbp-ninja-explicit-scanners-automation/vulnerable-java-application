@@ -4,13 +4,22 @@ project:
   branch: main
   revision:
     name: HEAD
-    date: "2025-07-14T00:00:00Z"
+    date: "2025-07-15T00:00:00Z"
 
+# capture:
+#   fileSystem:
+#     java:
+#       files:
+#         - directory: ./src/main/java/com/datadoghq/workshops/samplevulnerablejavaapp
 capture:
-  fileSystem:
-    java:
-      files:
-        - directory: ./src/main/java/com/datadoghq/workshops/samplevulnerablejavaapp
+   coverity:
+     buildless:
+        project:
+           languages:
+            - "java"
+            # - "javascript"
+            excludes:
+            - build.gradle
 
 analyze:
   mode: central
