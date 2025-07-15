@@ -1,10 +1,10 @@
-version: "1"
-project:
-  name: vulnerable-java-application
-  branch: main
-  revision:
-    name: HEAD
-    date: "2025-07-15T00:00:00Z"
+# version: "1"
+# project:
+#   name: vulnerable-java-application
+#   branch: main
+#   revision:
+#     name: HEAD
+#     date: "2025-07-15T00:00:00Z"
 
 # capture:
 #   fileSystem:
@@ -20,21 +20,50 @@ project:
 #             excludes:
 #             - build.gradle
 
+# capture:
+#   coverity:
+#     autoCapture: enable
+
+# analyze:
+#   mode: central
+#   coverity:
+#     caching:
+#       jars: disable
+#       tu-caching: disable
+#       rws: disable
+#       pfi: disable
+
+# install:
+#   coverity:
+#     version: default
+
+# serverUrl: https://cloudbees.polaris.synopsys.com
+
+version: "1"
+project:
+  name: vulnerable-java-application
+  branch: main
+  revision:
+    name: HEAD
+    date: "2025-07-15T00:00:00Z"
+
 capture:
-  coverity:
-    autoCapture: enable
+  build:
+    cleanCommands:
+      - shell: ["./gradlew", "clean"]
+    buildCommands:
+      - shell: ["./gradlew", "build", "-x", "test"]
+
+  fileSystem:
+    java:
+      files:
+        - directory: ./src
 
 analyze:
   mode: central
-  coverity:
-    caching:
-      jars: disable
-      tu-caching: disable
-      rws: disable
-      pfi: disable
 
 install:
   coverity:
     version: default
 
-serverUrl: https://cloudbees.polaris.synopsys.com
+serverUrl:  https://cloudbees.polaris.synopsys.com
